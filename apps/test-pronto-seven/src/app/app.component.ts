@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  sideNavOpen = false;
   title = 'test-pronto-seven';
+
+  sideNavToggle(): void {
+    this.sideNavOpen = !this.sideNavOpen;
+  }
 }
