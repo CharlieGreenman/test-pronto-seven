@@ -23,6 +23,9 @@
       ],
       "@test-pronto-seven/common/ui": [
         "libs/common/ui/src/index.ts"
+      ],
+      "@test-pronto-seven/home": [
+        "libs/home/src/index.ts"
       ]
     }
   },
