@@ -1,0 +1,95 @@
+{
+  "name": "test-pronto-seven",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/test-pronto-seven/src",
+  "prefix": "test-pronto-seven",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/test-pronto-seven",
+        "index": "apps/test-pronto-seven/src/index.html",
+        "main": "apps/test-pronto-seven/src/main.ts",
+        "polyfills": "apps/test-pronto-seven/src/polyfills.ts",
+        "tsConfig": "apps/test-pronto-seven/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/test-pronto-seven/src/favicon.ico",
+          "apps/test-pronto-seven/src/assets"
+        ],
+        "styles": ["apps/test-pronto-seven/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/test-pronto-seven/src/environments/environment.ts",
+              "with": "apps/test-pronto-seven/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "test-pronto-seven:build:production"
+        },
+        "development": {
+          "browserTarget": "test-pronto-seven:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "test-pronto-seven:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/test-pronto-seven/src/**/*.ts",
+          "apps/test-pronto-seven/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/test-pronto-seven"],
+      "options": {
+        "jestConfig": "apps/test-pronto-seven/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
